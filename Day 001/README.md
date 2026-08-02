@@ -1,5 +1,4 @@
 # Binary Search
-
 ## Problem
 Given a sorted array of integers and a target value, return the index of the target if it exists. Otherwise, return -1.
 
@@ -25,6 +24,38 @@ O(1)
 - Divide and Conquer
 - Searching in a Sorted Array
 - Time Complexity Analysis
+
+## Language
+C++
+
+# Running Sum of 1D Array
+
+## Problem
+Given an integer array `nums`, return the running sum of the array. The running sum at each index is the sum of all the elements from the beginning of the array up to that index.
+
+## Approach
+I initialized a variable `sum` to store the cumulative sum. I traversed the array from left to right, added each element to `sum`, and stored the updated value in a new vector. Finally, I returned the resulting vector containing the running sums.
+
+## Algorithm
+1. Create an empty vector `result`.
+2. Initialize a variable `sum` with `0`.
+3. Traverse the array from the first element to the last.
+4. Add the current element to `sum`.
+5. Store `sum` in the `result` vector.
+6. Return the `result` vector.
+
+## Time Complexity
+O(n)
+
+## Space Complexity
+O(n)
+
+## Concepts Learned
+- Arrays
+- Vectors
+- Running Sum
+- Prefix Sum
+- Array Traversal
 
 ## Language
 C++
