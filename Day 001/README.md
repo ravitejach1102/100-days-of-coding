@@ -59,3 +59,25 @@ O(n)
 
 ## Language
 C++
+
+# Sorting a Vector
+
+## Platform
+HackerRank
+
+## Difficulty
+Easy
+
+## Approach
+Stored the elements in a vector and used the C++ STL `sort()` function to arrange them in ascending order.
+
+## Time Complexity
+O(n log n)
+
+## Space Complexity
+O(1)
+
+## Concepts Learned
+- Vectors
+- STL sort()
+- Sorting
