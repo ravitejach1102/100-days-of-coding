@@ -25,7 +25,7 @@ int main() {
     if (result != -1) {
         cout << "Element found at index: " << result << endl;
     } else {
-        cout << "Element not found in the array." << endl;
+        cout << "Element not found in array." << endl;
     }
     return 0;
 }
