@@ -143,3 +143,70 @@ The program contains **both implementations in the same file**:
 * `INT_MAX`
 * Time Complexity
 * Space Complexity
+
+
+# Single Number - C++
+
+## Problem
+
+Given an array where every element appears twice except one element, find the element that appears only once.
+
+### Example
+
+**Input**
+
+```text
+4 1 2 1 2
+```
+
+**Output**
+
+```text
+The single number is: 4
+```
+
+---
+
+## Approach
+
+* Initialize `result` as `0`.
+* Traverse the array.
+* Perform the XOR (`^`) operation with each element.
+* Duplicate numbers cancel each other out.
+* The remaining value is the single number.
+
+---
+
+## XOR Property
+
+```text
+a ^ a = 0
+a ^ 0 = a
+```
+
+Example:
+
+```text
+4 ^ 1 ^ 2 ^ 1 ^ 2
+= 4 ^ (1 ^ 1) ^ (2 ^ 2)
+= 4 ^ 0 ^ 0
+= 4
+```
+
+---
+
+## Time Complexity
+
+* **O(n)**
+
+## Space Complexity
+
+* **O(1)**
+
+---
+
+## Concepts Used
+
+* Vectors
+* Loops
+* Bitwise XOR (`^`)
