@@ -93,3 +93,51 @@ Total numbers with even digits = **2**.
 - Functions
 - Conditional Statements (`if`)
 - Integer Division
+
+# Linear Search
+
+## Description
+This C++ program performs a linear search to determine whether a target element exists in an array. It returns **"YES"** if the element is found; otherwise, it returns **"NO"**.
+
+## Algorithm
+1. Read the size of the array and the target element.
+2. Store the array elements in a vector.
+3. Traverse the vector from the first element to the last.
+4. Compare each element with the target.
+5. If the target is found, return `"YES"`.
+6. If the traversal completes without finding the target, return `"NO"`.
+
+## Example
+
+**Input**
+```cpp
+5 4
+1 2 3 4 5
+```
+
+**Output**
+```
+YES
+```
+
+**Explanation**
+- Traverse the array one element at a time.
+- Compare each element with the target (`4`).
+- The target is found in the array.
+- Therefore, the output is **"YES"**.
+
+## Time Complexity
+**O(n)**
+
+- `n` = Number of elements in the array
+
+## Space Complexity
+**O(1)**
+
+## Concepts Used
+- Arrays
+- Vectors
+- Linear Search
+- Loops (`for`)
+- Functions
+- Conditional Statements (`if`)
