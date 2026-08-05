@@ -44,3 +44,52 @@ Output: false
 
 ## Space Complexity
 - **O(1)**
+
+# Find Numbers with Even Number of Digits
+
+## Description
+This C++ program counts how many numbers in a list have an even number of digits.
+
+## Algorithm
+1. Traverse each number in the array/vector.
+2. Count the number of digits using a `while` loop.
+3. If the digit count is even, increase the answer by 1.
+4. Print the final count.
+
+## Example
+
+**Input**
+```cpp
+{12, 345, 2, 6, 7896}
+```
+
+**Output**
+```
+2
+```
+
+**Explanation**
+- 12 → 2 digits ✅
+- 345 → 3 digits ❌
+- 2 → 1 digit ❌
+- 6 → 1 digit ❌
+- 7896 → 4 digits ✅
+
+Total numbers with even digits = **2**.
+
+## Time Complexity
+**O(n × d)**
+
+- `n` = Number of elements
+- `d` = Number of digits in each number
+
+## Space Complexity
+**O(1)**
+
+## Concepts Used
+- Arrays
+- Vectors
+- Loops (`for`, `while`)
+- Functions
+- Conditional Statements (`if`)
+- Integer Division
