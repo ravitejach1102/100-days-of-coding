@@ -58,3 +58,4 @@ int main() {
 //     }
 //     return -1;
 // }  
+// tc: O(log n)
