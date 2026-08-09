@@ -1,3 +1,89 @@
+# Trapping Rain Water
+
+## Description
+
+This C++ program finds how much rain water can be trapped between buildings.
+
+### Input
+
+```text
+[4, 2, 0, 3, 2, 5]
+```
+
+### Output
+
+```text
+9
+```
+
+## Graph
+
+The **blue shaded area** represents the trapped water.
+
+![Trapping Rain Water Graph](trapping_rain_water_graph.png)
+
+## Approach
+
+For every index, we find:
+
+* `leftmax` → Maximum height on the left
+* `rightmax` → Maximum height on the right
+
+Then calculate:
+
+```text
+Water = min(leftmax, rightmax) - height[i]
+```
+
+### Example
+
+For index `2`:
+
+```text
+Height = 0
+Left Max = 4
+Right Max = 5
+
+Water = min(4, 5) - 0
+      = 4
+```
+
+Water at each index:
+
+```text
+[0, 2, 4, 1, 2, 0]
+```
+
+Total:
+
+```text
+0 + 2 + 4 + 1 + 2 + 0 = 9
+```
+
+## Algorithm
+
+1. Find the maximum height from the left.
+2. Find the maximum height from the right.
+3. Calculate water using `min(leftmax, rightmax) - height`.
+4. Add all water values.
+
+## Complexity
+
+**Time:** `O(n)`
+
+**Space:** `O(n)`
+
+## Concepts Used
+
+* Vectors
+* Arrays
+* `max()`
+* `min()`
+* Prefix Maximum
+* Suffix Maximum
+
+
+
 # Fibonacci Number Using Recursion
 
 ## Description
