@@ -213,3 +213,123 @@ No extra memory is used.
 * Conditional statements
 * Bitwise AND (`&`)
 * Binary numbers
+
+
+# Power of Two
+
+## Description
+
+This C++ program checks whether a given number is a **power of 2**.
+
+Examples of powers of 2:
+
+```text
+1, 2, 4, 8, 16, 32, 64, ...
+```
+
+The program uses a **bitwise AND (`&`) operator** to check this.
+
+## How It Works
+
+For a positive number `n`, a power of 2 has only **one `1` in its binary representation**.
+
+Example:
+
+```text
+8  →  1000
+7  →  0111
+```
+
+When we calculate:
+
+```text
+8 & 7 = 0
+```
+
+So, `8` is a power of 2.
+
+The condition used is:
+
+```cpp
+(n & (n - 1)) == 0
+```
+
+## Algorithm
+
+1. Read the number `n`.
+2. Check if `n` is `0`.
+3. Check that `n` is positive.
+4. Calculate `n & (n - 1)`.
+5. If the result is `0`, the number is a power of 2.
+6. Print `Yes` or `No`.
+
+## Example 1
+
+### Input
+
+```text
+8
+```
+
+### Output
+
+```text
+Yes
+```
+
+### Explanation
+
+```text
+8  = 1000
+7  = 0111
+
+1000
+&
+0111
+----
+0000
+```
+
+Therefore, `8` is a power of 2.
+
+## Example 2
+
+### Input
+
+```text
+10
+```
+
+### Output
+
+```text
+No
+```
+
+Because `10` is not a power of 2.
+
+## Time Complexity
+
+```text
+O(1)
+```
+
+The program performs only a few operations.
+
+## Space Complexity
+
+```text
+O(1)
+```
+
+No extra memory is used.
+
+## Concepts Used
+
+* C++
+* Functions
+* Boolean (`bool`)
+* Conditional statements
+* Bitwise AND (`&`)
+* Binary numbers
+
