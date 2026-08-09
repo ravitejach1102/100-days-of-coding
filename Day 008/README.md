@@ -18,9 +18,18 @@ This C++ program finds how much rain water can be trapped between buildings.
 
 ## Graph
 
-The **blue shaded area** represents the trapped water.
+Height
+  5                       █
+  4   █ ~~~~~~~~~~~~~~~~~ █
+  3   █ ~~~~~~~~ █ ~~~~~~ █
+  2   █ █ ~~~~~~~ █ █ ~~~ █
+  1   █ █ ~~~~~~~ █ █ ~~~ █
+  0   █ █ █ █ █ █ █ █ █ █ █
+      -----------------------
+      4   2   0   3   2   5
 
-![Trapping Rain Water Graph](trapping_rain_water_graph.png)
+      Water = 2 + 4 + 1 + 2
+            = 9 units
 
 ## Approach
 
