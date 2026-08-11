@@ -220,3 +220,199 @@ No extra array is used. The changes are made directly inside the original array.
 This solution works because the input array is **sorted**.
 
 If the array is not sorted, this approach cannot directly be used. We would need to sort the array first or use another technique.
+
+
+# N-Queens Problem
+
+## Problem Statement
+
+The **N-Queens Problem** is to place `N` queens on an `N × N` chessboard such that no two queens attack each other.
+
+A queen can attack another queen if they are in the same:
+
+* Row
+* Column
+* Diagonal
+
+The goal is to find **all possible solutions**.
+
+---
+
+## Approach
+
+We use **Backtracking**.
+
+The main idea is:
+
+1. Start from the first row.
+2. Try placing a queen in every column.
+3. Check whether the position is safe.
+4. If it is safe, place the queen and move to the next row.
+5. If no valid position is possible, go back and change the previous queen's position.
+6. When all `N` rows are completed, store the board as a solution.
+
+---
+
+## `isSafe()` Logic
+
+Before placing a queen, we check:
+
+### 1. Horizontal Check
+
+Checks whether another queen already exists in the current row.
+
+### 2. Vertical Check
+
+Checks the previous rows for a queen in the same column.
+
+### 3. Left Diagonal Check
+
+Checks the diagonal going:
+
+```text
+↖
+```
+
+### 4. Right Diagonal Check
+
+Checks the diagonal going:
+
+```text
+↗
+```
+
+If no queen is found in these directions, the position is safe.
+
+---
+
+## Backtracking
+
+After placing a queen:
+
+```text
+Place Queen
+    ↓
+Move to next row
+    ↓
+Try to place next queen
+    ↓
+If possible → continue
+If not possible → go back
+```
+
+When returning to the previous row, the queen is removed and another column is tried.
+
+This is called **backtracking**.
+
+---
+
+## Dry Run for N = 4
+
+Initially:
+
+```text
+. . . .
+. . . .
+. . . .
+. . . .
+```
+
+Try placing a queen in row `0`.
+
+One successful path is:
+
+```text
+. Q . .
+. . . Q
+Q . . .
+. . Q .
+```
+
+Here:
+
+* Queen 1 → Row 0, Column 1
+* Queen 2 → Row 1, Column 3
+* Queen 3 → Row 2, Column 0
+* Queen 4 → Row 3, Column 2
+
+No two queens attack each other, so this board is stored as a solution.
+
+Another solution is:
+
+```text
+. . Q .
+Q . . .
+. . . Q
+. Q . .
+```
+
+Therefore, for `N = 4`, there are **2 solutions**.
+
+---
+
+## Output Format
+
+Each solution is stored in:
+
+```text
+vector<vector<string>>
+```
+
+For `N = 4`, the result contains:
+
+```text
+[
+    [".Q..",
+     "...Q",
+     "Q...",
+     "..Q."],
+
+    ["..Q.",
+     "Q...",
+     "...Q",
+     ".Q.."]
+]
+```
+
+Each inner `vector<string>` represents one complete chessboard.
+
+---
+
+## Algorithm
+
+1. Create an empty `N × N` board.
+2. Start placing queens from row `0`.
+3. For every column:
+
+   * Check whether the position is safe.
+   * If safe, place `Q`.
+   * Recursively solve the next row.
+   * Remove `Q` after returning from recursion.
+4. When `row == n`, store the board in `ans`.
+5. Return all stored solutions.
+
+---
+
+## Time Complexity
+
+**O(N!) approximately**
+
+The algorithm tries different arrangements of queens using backtracking. The exact number of operations depends on how many positions are rejected during the safety checks.
+
+## Space Complexity
+
+**O(N²)** for the board and stored solutions, excluding the recursion stack.
+
+---
+
+## Key Concept
+
+The main concept used in this problem is:
+
+**Backtracking**
+
+Backtracking means:
+
+> Make a choice → explore → if it fails, undo the choice → try another choice.
+
+This approach is commonly used in problems involving permutations, combinations, maze solving, Sudoku, and N-Queens.
