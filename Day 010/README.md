@@ -88,3 +88,135 @@ The last three positions are available for the merged elements.
 
 > **Key Point:** The `O(1)` space solution is possible because `nums1` already has enough space at the end.
 
+
+# Remove Duplicates from Sorted Array
+
+## Problem Statement
+
+Given a sorted array, remove the duplicate elements **in-place** so that each element appears only once.
+
+Return the number of unique elements.
+
+### Example
+
+**Input:**
+`[1, 1, 2, 2, 3]`
+
+**Output:**
+`3`
+
+The first 3 elements of the array should be:
+
+`[1, 2, 3]`
+
+---
+
+## Approach
+
+Since the array is already **sorted**, duplicate elements will always be next to each other.
+
+We use two pointers:
+
+* **`i`** → scans the array and finds new unique elements.
+* **`k`** → keeps track of the position where the next unique element should be placed.
+
+The first element is always unique, so we start `k` from `1`.
+
+Whenever `nums[i]` is different from the previous element:
+
+1. Place `nums[i]` at position `k`.
+2. Increase `k`.
+
+At the end, `k` represents the number of unique elements.
+
+---
+
+## Logic
+
+The main condition is:
+
+`nums[i] != nums[i - 1]`
+
+* If they are equal → the current element is a duplicate, so skip it.
+* If they are different → it is a new unique element, so place it at index `k`.
+
+### Why does this work?
+
+Because the array is sorted, all duplicates are together.
+
+For example:
+
+`[1, 1, 2, 2, 3]`
+
+We only need to check whether the current element is different from the previous element.
+
+---
+
+## Dry Run
+
+### Input
+
+`[1, 1, 2, 2, 3]`
+
+Initially:
+
+* `k = 1`
+* First element `1` is already considered unique.
+
+| `i` | Current | Previous | Action                     | Array         |
+| --- | ------: | -------: | -------------------------- | ------------- |
+| 1   |       1 |        1 | Duplicate → skip           | `[1,1,2,2,3]` |
+| 2   |       2 |        1 | New element → place at `k` | `[1,2,2,2,3]` |
+| 3   |       2 |        2 | Duplicate → skip           | `[1,2,2,2,3]` |
+| 4   |       3 |        2 | New element → place at `k` | `[1,2,3,2,3]` |
+
+At the end:
+
+`k = 3`
+
+So the unique elements are:
+
+`[1, 2, 3]`
+
+Only the first `k` elements are important.
+
+---
+
+## Algorithm
+
+1. Set `k = 1`.
+2. Start scanning the array from index `1`.
+3. Compare the current element with the previous element.
+4. If they are different:
+
+   * Store the current element at position `k`.
+   * Increment `k`.
+5. If they are the same, skip the element.
+6. Return `k`.
+
+---
+
+## Time Complexity
+
+**O(n)**
+
+We scan the array only once.
+
+## Space Complexity
+
+**O(1)**
+
+No extra array is used. The changes are made directly inside the original array.
+
+---
+
+## Key Concept
+
+> Since the array is sorted, duplicates are adjacent.
+> We keep only the first occurrence of each value and move unique elements toward the beginning of the array.
+
+### Important
+
+This solution works because the input array is **sorted**.
+
+If the array is not sorted, this approach cannot directly be used. We would need to sort the array first or use another technique.
