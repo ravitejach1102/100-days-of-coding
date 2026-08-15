@@ -315,73 +315,101 @@ Find the middle
 -> All values match -> Palindrome
 -> Different value -> Not a Palindrome
 
-# Detect Cycle in a Linked List
+# Detect Cycle in a Linked List - C++
 
 ## Problem
 
-Check whether a linked list contains a cycle.
+Given a linked list, check whether the linked list contains a cycle.
 
-A cycle means the last node points back to an earlier node instead of pointing to `NULL`.
+A cycle occurs when a node points back to a previous node instead of pointing to `NULL`.
 
-## Example
+### Example
 
 Normal Linked List:
 
-4 → 3 → 2 → 1 → NULL
+`4 → 3 → 2 → 1 → NULL`
 
 Linked List with Cycle:
 
-4 → 3 → 2 → 1
-↑           ↓
-└───────────┘
+`4 → 3 → 2 → 1 → 4`
 
-Here, `1` points back to `4`, so a cycle exists.
+In this example, the last node points back to the first node, so a cycle exists.
+
+---
 
 ## Approach
 
-We use Floyd's Cycle Detection Algorithm.
+We use **Floyd's Cycle Detection Algorithm**.
 
 It uses two pointers:
 
-- `slow` moves one step at a time.
-- `fast` moves two steps at a time.
+* `slow` moves one step at a time.
+* `fast` moves two steps at a time.
+
+---
 
 ## Logic
 
-1. Start both `slow` and `fast` at the `head`.
-2. Move `slow` by one node.
-3. Move `fast` by two nodes.
+1. Start both `slow` and `fast` at the head.
+2. Move `slow` one step.
+3. Move `fast` two steps.
 4. If `slow` and `fast` meet, a cycle exists.
 5. If `fast` reaches `NULL`, there is no cycle.
 
-## Why Does This Work?
+---
 
-Imagine two people running on a circular track.
+## How It Works
 
-- Slow person moves 1 step.
-- Fast person moves 2 steps.
-- Since the track is circular, the fast person will eventually catch the slow person.
+Consider the linked list:
 
-Similarly, in a linked list with a cycle, `slow` and `fast` will eventually meet.
+`4 → 3 → 2 → 1 → 4`
+
+Both pointers start at the head.
+
+* `slow` moves one node at a time.
+* `fast` moves two nodes at a time.
+* Since the list has a cycle, `fast` will eventually meet `slow`.
+
+If `slow == fast`, a cycle exists.
+
+If `fast == NULL`, there is no cycle.
+
+---
+
+## Example
+
+### Input
+
+`4 → 3 → 2 → 1 → 4`
+
+### Output
+
+`Cycle exists`
+
+---
 
 ## Time Complexity
 
-O(n)
+* **O(n)**
+
+Each node is visited a limited number of times.
+
+---
 
 ## Space Complexity
 
-O(1)
+* **O(1)**
 
-## Key Point
+Only two pointers, `slow` and `fast`, are used.
 
-`slow` → moves 1 step
+---
 
-`fast` → moves 2 steps
+## Concepts Used
 
-`slow == fast` → Cycle exists
-
-`fast == NULL` → No cycle
-
-## Important Concept
-
-Slow and Fast pointers are used to detect a cycle without using extra memory.
+* Linked List
+* Pointers
+* Slow and Fast Pointers
+* Floyd's Cycle Detection Algorithm
+* `NULL`
+* Time Complexity
+* Space Complexity
