@@ -314,3 +314,74 @@ Find the middle
 -> Compare both halves
 -> All values match -> Palindrome
 -> Different value -> Not a Palindrome
+
+# Detect Cycle in a Linked List
+
+## Problem
+
+Check whether a linked list contains a cycle.
+
+A cycle means the last node points back to an earlier node instead of pointing to `NULL`.
+
+## Example
+
+Normal Linked List:
+
+4 → 3 → 2 → 1 → NULL
+
+Linked List with Cycle:
+
+4 → 3 → 2 → 1
+↑           ↓
+└───────────┘
+
+Here, `1` points back to `4`, so a cycle exists.
+
+## Approach
+
+We use Floyd's Cycle Detection Algorithm.
+
+It uses two pointers:
+
+- `slow` moves one step at a time.
+- `fast` moves two steps at a time.
+
+## Logic
+
+1. Start both `slow` and `fast` at the `head`.
+2. Move `slow` by one node.
+3. Move `fast` by two nodes.
+4. If `slow` and `fast` meet, a cycle exists.
+5. If `fast` reaches `NULL`, there is no cycle.
+
+## Why Does This Work?
+
+Imagine two people running on a circular track.
+
+- Slow person moves 1 step.
+- Fast person moves 2 steps.
+- Since the track is circular, the fast person will eventually catch the slow person.
+
+Similarly, in a linked list with a cycle, `slow` and `fast` will eventually meet.
+
+## Time Complexity
+
+O(n)
+
+## Space Complexity
+
+O(1)
+
+## Key Point
+
+`slow` → moves 1 step
+
+`fast` → moves 2 steps
+
+`slow == fast` → Cycle exists
+
+`fast == NULL` → No cycle
+
+## Important Concept
+
+Slow and Fast pointers are used to detect a cycle without using extra memory.
