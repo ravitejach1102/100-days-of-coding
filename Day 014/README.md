@@ -129,3 +129,188 @@ Time Complexity: O(n)
 Space Complexity: O(1)
 
 We only use two extra pointers, slow and fast.
+
+# Palindrome Linked List
+
+## Problem
+
+Check whether a singly linked list is a palindrome.
+
+A linked list is a palindrome if it reads the same from left to right and right to left.
+
+For example:
+
+1 -> 2 -> 2 -> 1
+
+Output:
+
+true
+
+## Approach
+
+The solution uses three steps:
+
+1. Find the middle of the linked list using slow and fast pointers.
+2. Reverse the second half of the linked list.
+3. Compare the first half with the reversed second half.
+
+## Step 1: Find the Middle
+
+Use two pointers:
+
+Node* slow = head;
+Node* fast = head;
+
+- slow moves one step at a time.
+- fast moves two steps at a time.
+
+For the list:
+
+1 -> 2 -> 2 -> 1
+
+slow reaches the beginning of the second half.
+
+## Step 2: Reverse the Second Half
+
+Initialize:
+
+Node* curr = slow;
+Node* prev = NULL;
+
+The second half is:
+
+2 -> 1 -> NULL
+
+After reversing:
+
+1 -> 2 -> NULL
+
+During reversal, prev keeps track of the previous node.
+
+At the end, prev points to the first node of the reversed second half.
+
+So:
+
+Node* back = prev;
+
+Now back starts from the beginning of the reversed second half.
+
+## Step 3: Compare Both Halves
+
+Initialize:
+
+Node* front = head;
+Node* back = prev;
+
+front starts from the beginning of the list.
+
+back starts from the beginning of the reversed second half.
+
+Compare their values:
+
+if (front->data != back->data)
+
+If any values are different, return false.
+
+If all values match, return true.
+
+## Dry Run
+
+Consider:
+
+1 -> 2 -> 2 -> 1 -> NULL
+
+### Step 1: Find the Middle
+
+Initial:
+
+slow = 1
+fast = 1
+
+First iteration:
+
+slow = 2
+fast = 2
+
+Second iteration:
+
+slow = 2
+fast = NULL
+
+The loop stops because fast becomes NULL.
+
+So slow points to the beginning of the second half.
+
+### Step 2: Reverse the Second Half
+
+Initial:
+
+curr = 2
+prev = NULL
+
+First iteration:
+
+next = 1
+2 -> NULL
+prev = 2
+curr = 1
+
+Second iteration:
+
+next = NULL
+1 -> 2
+prev = 1
+curr = NULL
+
+After reversal:
+
+prev -> 1 -> 2 -> NULL
+
+Therefore:
+
+back = prev
+
+So:
+
+back -> 1 -> 2 -> NULL
+
+### Step 3: Compare
+
+front starts at the head:
+
+front -> 1 -> 2 -> 2 -> 1
+
+back starts at prev:
+
+back -> 1 -> 2
+
+Comparison:
+
+1 == 1
+2 == 2
+
+All values match.
+
+Therefore:
+
+true
+
+## Why This Approach?
+
+The solution reverses the second half of the linked list instead of using an extra array.
+
+This reduces the extra space required by the algorithm.
+
+## Complexity
+
+Time Complexity: O(n)
+
+Space Complexity: O(1)
+
+## Key Concept
+
+Find the middle
+-> Reverse the second half
+-> Compare both halves
+-> All values match -> Palindrome
+-> Different value -> Not a Palindrome
