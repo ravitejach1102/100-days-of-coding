@@ -151,3 +151,99 @@ Second half:
 ## 8. Space Complexity
 
 **O(1)** — Only pointer variables are used; no extra data structure is created.
+
+# Reverse Linked List in K Groups
+
+## 1. Problem Statement
+
+Given a linked list and an integer `k`, reverse the nodes of the list in groups of `k`.
+
+If the last group has fewer than `k` nodes, keep that group unchanged.
+
+Example:
+
+`1 -> 2 -> 3 -> 4 -> 5 -> 6`
+
+For `k = 2`:
+
+`2 -> 1 -> 4 -> 3 -> 6 -> 5`
+
+## 2. Concept
+
+* Divide the linked list into groups of `k` nodes.
+* Check if `k` nodes are available before reversing.
+* Reverse each group using pointers.
+* **Recursion** is used to process the remaining groups.
+
+## 3. Logic
+
+1. Start from the current `head`.
+2. Check whether `k` nodes are available.
+3. If fewer than `k` nodes are available, return the list without changing it.
+4. Recursively reverse the remaining groups first.
+5. Reverse the current group of `k` nodes.
+6. Connect the reversed group to the already processed part.
+7. Return the new head of the reversed group.
+
+## 4. Approach
+
+1. Take `head` and `k`.
+2. Count `k` nodes to check if a complete group exists.
+3. Recursively process the remaining list.
+4. Reverse the current `k` nodes.
+5. Connect the last node of the current group to the result of recursion.
+6. Return the new head.
+
+## 5. Dry Run
+
+Example:
+
+`1 -> 2 -> 3 -> 4 -> 5 -> 6`
+
+`k = 2`
+
+### Step 1: Divide into Groups
+
+`[1 -> 2] [3 -> 4] [5 -> 6]`
+
+### Step 2: Process from the End
+
+The recursion reaches the last group first:
+
+`[5 -> 6]`
+
+Reverse it:
+
+`6 -> 5`
+
+Then return to:
+
+`[3 -> 4]`
+
+Reverse it:
+
+`4 -> 3`
+
+Then return to:
+
+`[1 -> 2]`
+
+Reverse it:
+
+`2 -> 1`
+
+### Step 3: Connect Groups
+
+Final list:
+
+`2 -> 1 -> 4 -> 3 -> 6 -> 5`
+
+Since every group contains exactly `2` nodes, all groups are reversed.
+
+## 7. Time Complexity
+
+**O(n)** — Each node is visited and reversed once.
+
+## 8. Space Complexity
+
+**O(n)** — Recursion uses stack space for the groups being processed.
