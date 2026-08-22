@@ -292,3 +292,304 @@ Therefore:
 ## 8. Space Complexity
 
 **O(p)** — The set stores the distinct prime factors, where `p` is the number of distinct prime factors.
+
+
+# Maximum Product of Two Elements in an Array
+
+## 1. Problem Statement
+
+Given an array, choose two different elements and return the maximum value of:
+
+`(nums[i] - 1) * (nums[j] - 1)`
+
+To get the maximum product, we need the two largest elements.
+
+Example:
+
+`nums = [3, 4, 5, 2]`
+
+Two largest elements are `5` and `4`.
+
+Result:
+
+`(5 - 1) * (4 - 1) = 12`
+
+## 2. Concept
+
+* Find the **largest** and **second largest** elements.
+* Use two variables: `mx` and `smx`.
+* Update them while traversing the array.
+* Calculate the final product using the two largest values.
+
+## 3. Logic
+
+1. Start `mx` and `smx` with `INT_MIN`.
+2. Traverse every element.
+3. If the current element is greater than `mx`, move `mx` to `smx`.
+4. Make the current element the new `mx`.
+5. Otherwise, if it is greater than `smx`, update `smx`.
+6. Calculate `(mx - 1) * (smx - 1)`.
+
+## 4. Approach
+
+1. Initialize `mx` and `smx` to `INT_MIN`.
+2. Traverse the array once.
+3. Find the largest element in `mx`.
+4. Find the second largest element in `smx`.
+5. Subtract `1` from both values.
+6. Multiply them and return the result.
+
+## 5. Dry Run
+
+Example:
+
+`nums = [3, 4, 5, 2]`
+
+| Element | `mx` |   `smx` |
+| ------- | ---: | ------: |
+| 3       |    3 | INT_MIN |
+| 4       |    4 |       3 |
+| 5       |    5 |       4 |
+| 2       |    5 |       4 |
+
+So:
+
+`mx = 5`
+`smx = 4`
+
+Calculate:
+
+```text
+(mx - 1) * (smx - 1)
+
+= (5 - 1) * (4 - 1)
+
+= 4 * 3
+
+= 12
+```
+
+**Answer: `12`**
+
+## 7. Time Complexity
+
+**O(n)** — The array is traversed only once.
+
+## 8. Space Complexity
+
+**O(1)** — Only two variables are used to store the largest values.
+
+
+# Find All Numbers Disappeared in an Array
+
+## 1. Problem Statement
+
+Given an array of `n` integers, where each number is between `1` and `n`, find all numbers from `1` to `n` that do not appear in the array.
+
+Example:
+
+`nums = [4, 3, 2, 7, 8, 2, 3, 1]`
+
+Numbers from `1` to `8` are:
+
+`1 2 3 4 5 6 7 8`
+
+Numbers `5` and `6` are missing.
+
+Answer:
+
+`[5, 6]`
+
+## 2. Concept
+
+* Use a **set** to store all numbers that appear in the array.
+* A `set` stores only unique values.
+* Use `find()` to check whether a number exists in the set.
+* If `find()` returns `s.end()`, the number is not present.
+
+## 3. Logic
+
+1. Create an empty set `s`.
+2. Insert every array element into the set.
+3. Check every number from `1` to `n`.
+4. Use `s.find(i)` to check if the number exists.
+5. If `s.find(i) == s.end()`, the number is missing.
+6. Add the missing number to `result`.
+
+### What does `find()` do?
+
+```cpp
+s.find(i)
+```
+
+searches for `i` inside the set.
+
+If `i` exists:
+
+```cpp
+s.find(i) != s.end()
+```
+
+If `i` does not exist:
+
+```cpp
+s.find(i) == s.end()
+```
+
+## 4. Approach
+
+1. Create a `set<int>`.
+2. Insert all elements of `nums` into the set.
+3. Loop from `1` to `n`.
+4. Search each number using `find()`.
+5. If it is not found, add it to `result`.
+6. Return the result.
+
+## 5. Dry Run
+
+Example:
+
+`nums = [4, 3, 2, 7, 8, 2, 3, 1]`
+
+### Step 1: Insert into Set
+
+After inserting all elements:
+
+`set = {1, 2, 3, 4, 7, 8}`
+
+Duplicates like `2` and `3` are stored only once.
+
+### Step 2: Check `1` to `8`
+
+| Number | Found in Set? | Result  |
+| ------ | ------------- | ------- |
+| 1      | Yes           | —       |
+| 2      | Yes           | —       |
+| 3      | Yes           | —       |
+| 4      | Yes           | —       |
+| 5      | No            | Add `5` |
+| 6      | No            | Add `6` |
+| 7      | Yes           | —       |
+| 8      | Yes           | —       |
+
+Final result:
+
+`[5, 6]`
+
+## 7. Time Complexity
+
+**O(n log n)** — Inserting and searching in a `set` takes `O(log n)`.
+
+## 8. Space Complexity
+
+**O(n)** — The set can store up to `n` unique numbers.
+
+
+# Missing Number
+
+## 1. Problem Statement
+
+Given an array containing `n` different numbers from `0` to `n`, find the one number that is missing.
+
+Example:
+
+`nums = [0, 1]`
+
+Numbers should be:
+
+`0, 1, 2`
+
+The missing number is:
+
+`2`
+
+## 2. Concept
+
+* The numbers from `0` to `n` have a known sum.
+* We calculate the **expected sum** using a formula.
+* We calculate the **actual sum** of the array.
+* The difference between them is the missing number.
+
+## 3. Logic
+
+The sum of numbers from `0` to `n` is:
+
+```cpp
+n * (n + 1) / 2
+```
+
+For example, if `n = 3`:
+
+```text
+0 + 1 + 2 + 3 = 6
+```
+
+Using the formula:
+
+```text
+3 × 4 / 2 = 6
+```
+
+Then:
+
+```text
+Missing Number = Expected Sum - Actual Sum
+```
+
+## 4. Approach
+
+1. Find `n` using `nums.size()`.
+2. Calculate the expected sum from `0` to `n`.
+3. Calculate the actual sum of all array elements.
+4. Subtract actual sum from expected sum.
+5. Return the difference.
+
+## 5. Dry Run
+
+Example:
+
+`nums = [0, 1]`
+
+### Step 1: Find `n`
+
+```text
+n = nums.size()
+n = 2
+```
+
+### Step 2: Calculate Expected Sum
+
+```text
+expected = n × (n + 1) / 2
+         = 2 × 3 / 2
+         = 3
+```
+
+Numbers should be:
+
+`0 + 1 + 2 = 3`
+
+### Step 3: Calculate Actual Sum
+
+```text
+actual = 0 + 1
+       = 1
+```
+
+### Step 4: Find Missing Number
+
+```text
+expected - actual
+= 3 - 1
+= 2
+```
+
+**Answer: `2`**
+
+## 7. Time Complexity
+
+**O(n)** — The array is traversed once to calculate the actual sum.
+
+## 8. Space Complexity
+
+**O(1)** — Only a few integer variables are used.
